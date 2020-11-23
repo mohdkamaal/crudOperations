@@ -1,0 +1,54 @@
+a{
+    cursor: pointer;
+    text-decoration: underline;
+    color: #0000ee;
+    margin-right: 4px;
+}
+
+input[type=text], input[type=number], input[type=email] {
+    width: 80%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#btnsub{
+    text-align: center; 
+    align-items: center;
+border: 4px solid rgb(168, 247, 172);  
+width: 60px;  
+height: 40px;
+border-radius: 20%;
+
+}
+
+body > table{
+    width: 50%;
+}
+
+table{
+    border-collapse: collapse;
+}
+table.list{
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+tr:nth-child(even),table.list thead>tr {
+    background-color: #dddddd;
+}
+
+#formbox {
+background-color: lightgrey;
+width: 300px;
+border: 4px solid rgb(207, 151, 253);
+padding: 20px;
+margin: 20px;
+}

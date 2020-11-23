@@ -1,5 +1,6 @@
 
 var data = [];
+selectedRow = null;
 
 function addRowToTable()
 {
@@ -19,7 +20,7 @@ function addRowToTable()
     cel1.innerHTML = names;
     cel2.innerHTML = emails;
     cel3.innerHTML = phones;
-    cel4.innerHTML = '<a onClick="editRow('+emails+')">Edit</a> <a onClick="deleteRow('+emails+')">Delete</a>';
+    cel4.innerHTML = `<a onClick="onEdit(this);">Edit</a> <a onClick="onDelete(this);">Delete</a>`;
 }
 "('" + strParam + "');"
 function isValidEmail(email){
@@ -60,24 +61,51 @@ else
 {
     alert("Already Exist")
 }
+
+
+    let input=document.querySelectorAll('input');
+    input.forEach(input=> input.value="");
+
     
 }
 
+function clearInput(){
+
+    // clear input text
+     document.getElementById("name").value = "";
+     document.getElementById("email").value ="";
+     document.getElementById("phone").value = "";
+ }
+
+ // this code is for show highlight yellow in input
 function bg(x){
     x.style.background = "yellow";
    
 }
-function deleteRow(){
-    for(var i = 0; i < table.length; i++) {
-        if(data[i].emails == emails) {
-            data.splice(i, 1);
-            break;
-        }
+
+// this code is to delete data record
+function onDelete(td) {
+    if (confirm('Are you sure to delete this record ?')) {
+        row = td.parentElement.parentElement;
+        document.getElementById("datalist").deleteRow(row.rowIndex);
+        resetForm();
     }
 }
 
+// edit or update stored data
+function onEdit(){
+    debugger;
+    selectedRow = td.parentElement.parentElement;
+        document.getElementById("name").value = selectedRow.cells[0].innerHTML;
+        document.getElementById("email").value = selectedRow.cells[1].innerHTML;
+        document.getElementById("phone").value = selectedRow.cells[2].innerHTML;
 
-function editRow(){
-    // alert("edit code to update")
-    
+   
+}
+
+// to update data
+function updateRecord(addRowToTable) {
+    selectedRow.cells[0].innerHTML = addRowToTable.name;
+    selectedRow.cells[1].innerHTML = addRowToTable.email;
+    selectedRow.cells[2].innerHTML = addRowToTable.phone;
 }

@@ -10,15 +10,16 @@
 
 </head>
 <body>
+    <div id="formbox">
     <h3> ---Please Enter Form Details---</h3>
     Name: <input type="text" id="name" placeholder="enter Name" onfocus="bg(this);"><br><br>
     Email: <input type="email" id="email" placeholder="enter mail Address" onfocus="bg(this);"><br><br>
     Phone: <input type="text" id="phone" placeholder="enter Contact Number" onfocus="bg(this);"><br><br>
 
-    <input type="submit" onclick="submit();" value="Add/Show"><br><br><br><br>
-    
+    <button id="btnsub" type="submit" onclick="submit();" value="Add/Show">Submit</button><br><br><br><br>
+</div>
 
-    <table border="2">
+    <table border="2" id="datalist">
             
         <tr>
             <th>Name</th>
@@ -31,6 +32,7 @@
     
         
     </table>
+    <p> <b>Note: </b> if you want to Update or Delete a record then please click on Edit for update or click on delete for remove.</p>
     <script src="script.js"></script>
 </body>
 </html>
