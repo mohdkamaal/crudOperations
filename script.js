@@ -11,7 +11,7 @@ function addRowToTable()
     var cel3 = newRow.insertCell(2);
     var cel4 = newRow.insertCell(3);
 
-    
+
     emails = document.getElementById("email").value;
     names = document.getElementById("name").value;
     phones =document.getElementById("phone").value;
@@ -19,35 +19,47 @@ function addRowToTable()
     cel1.innerHTML = names;
     cel2.innerHTML = emails;
     cel3.innerHTML = phones;
-    cel4.innerHTML = `<a onClick="onEdit(this)">Edit</a>
-                      <a onClick="onDelete(this)">Delete</a>`;
+    cel4.innerHTML = '<a onClick="editRow('+emails+')">Edit</a> <a onClick="deleteRow('+emails+')">Delete</a>';
 }
-
+"('" + strParam + "');"
 function isValidEmail(email){
      var regExp = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
     return regExp.test(email);
 }
 
+function isDuplicateEmail(email){
+   var isDuplicate= data.find(x=>  x.email ==email);
+     return !!isDuplicate 
+}
 
 
 function submit(){
+    debugger;
     let  emails = document.getElementById("email").value;
     //Validating if email is valid or not
-    if(isValidEmail(emails))
+    var isAlreadyExist= isDuplicateEmail(emails);
+    if(!isAlreadyExist)
     {
-       names = document.getElementById("name").value;
-       phones =document.getElementById("phone").value;
+        if(isValidEmail(emails))
+        {
+            names = document.getElementById("name").value;
+            phones =document.getElementById("phone").value;
 
-       // adding data in our array variable
-       data.push({name:names,email:emails, phone:phones});
+             // adding data in our array variable
+            data.push({name:names,email:emails, phone:phones});
 
-       //inserting in the table
-       addRowToTable();
-    }
-    else
-    {
-        alert("Email is invalid")
-    }
+            //inserting in the table
+            addRowToTable();
+        }
+        else
+        {
+            alert("Email is invalid")
+        }
+}
+else
+{
+    alert("Already Exist")
+}
     
 }
 
@@ -55,5 +67,17 @@ function bg(x){
     x.style.background = "yellow";
    
 }
+function deleteRow(){
+    for(var i = 0; i < table.length; i++) {
+        if(data[i].emails == emails) {
+            data.splice(i, 1);
+            break;
+        }
+    }
+}
 
 
+function editRow(){
+    // alert("edit code to update")
+    
+}
