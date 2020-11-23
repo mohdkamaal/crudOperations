@@ -93,7 +93,7 @@ function onDelete(td) {
 }
 
 // edit or update stored data
-function onEdit(){
+function onEdit(td){
     debugger;
     selectedRow = td.parentElement.parentElement;
         document.getElementById("name").value = selectedRow.cells[0].innerHTML;
